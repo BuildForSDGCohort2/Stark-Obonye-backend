@@ -20,5 +20,6 @@ app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 // dbConnection.once('open', console.info.bind(console, 'connection established:'));
 /** database connection */
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
 });
