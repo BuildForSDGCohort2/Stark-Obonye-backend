@@ -1,0 +1,46 @@
+{
+  "name": "team-33h-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A server for a stokvel app to help users save and manage their finances online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run clean && eslint . src/",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "build": "babel src/ --out-dir dist",
+    "start": "nodemon --exec babel-node src/index.js",
+    "clean": "rimraf dist",
+    "serve": "node dist/index.js",
+    "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuildForSDGCohort2/TEAM-33H-backend.git"
+  },
+  "author": "Letlhogonolo Theodore Obonye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuildForSDGCohort2/TEAM-33H-backend/issues"
+  },
+  "homepage": "https://github.com/BuildForSDGCohort2/TEAM-33H-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.10.0",
+    "swagger-ui-express": "^4.1.4",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4",
+    "rimraf": "^3.0.2"
+  }
+}

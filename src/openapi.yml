@@ -1,0 +1,6 @@
+ 
+openapi: 3.0.0
+info:
+  title: Team 33H - Online Stokvel
+  version: 0.0.1
+  description: The API docs for Team 33H
