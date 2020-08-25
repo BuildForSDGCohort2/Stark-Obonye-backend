@@ -19,6 +19,10 @@ app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 // dbConnection.on('error', console.error.bind(console, 'connection error:'));
 // dbConnection.once('open', console.info.bind(console, 'connection established:'));
 /** database connection */
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
