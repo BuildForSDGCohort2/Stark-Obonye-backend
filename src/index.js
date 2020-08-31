@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 import Yaml from 'yamljs';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import { json } from 'body-parser';
+import dbConnection from './util/db';
 
 const port = process.env.PORT || 3000;
 const swaggerDoc = Yaml.load('src/openapi.yml');
@@ -16,8 +18,11 @@ app.use(json());
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 /** database connection */
-// dbConnection.on('error', console.error.bind(console, 'connection error:'));
-// dbConnection.once('open', console.info.bind(console, 'connection established:'));
+dbConnection.on('error', console.error.bind(console, 'connection error:'));
+dbConnection.once(
+  'open',
+  console.info.bind(console, 'connection established:')
+);
 /** database connection */
 
 if (process.env.NODE_ENV === 'production') {
