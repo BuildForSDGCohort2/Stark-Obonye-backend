@@ -5,7 +5,7 @@
   "description": "A server for a stokvel app to help users save and manage their finances online",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec",
+    "test": "mocha ./tests/**/*.spec.js",
     "lint": "npm run clean && eslint . src/",
     "dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src/ --out-dir dist",
@@ -27,6 +27,7 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.0",
