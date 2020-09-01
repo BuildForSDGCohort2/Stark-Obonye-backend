@@ -5,7 +5,7 @@
   "description": "A server for a stokvel app to help users save and manage their finances online",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec",
+    "test": "mocha ./tests/**/*.spec.js",
     "lint": "npm run clean && eslint . src/",
     "dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src/ --out-dir dist",
