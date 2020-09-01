@@ -5,7 +5,7 @@
   "description": "A server for a stokvel app to help users save and manage their finances online",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./tests/**/*.spec.js",
     "lint": "npm run clean && eslint . src/",
     "dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src/ --out-dir dist",
@@ -25,11 +25,15 @@
   },
   "homepage": "https://github.com/BuildForSDGCohort2/TEAM-33H-backend#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.0",
     "swagger-ui-express": "^4.1.4",
+    "web3": "^1.2.11",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
@@ -40,6 +44,7 @@
     "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
+    "mocha": "^8.1.3",
     "nodemon": "^2.0.4",
     "rimraf": "^3.0.2"
   }
