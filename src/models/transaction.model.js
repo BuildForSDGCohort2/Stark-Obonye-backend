@@ -4,13 +4,15 @@ const { Schema } = mongoose;
 
 const transactionSchema = Schema({
   fromWallet: {
-    address: String,
-    privateKey: String,
+    accountNumber: Number,
+    bankName: { type: String, required: true },
+    privateKey: { type: String, required: true },
     name: String
   },
   toWallet: {
-    address: String,
-    privateKey: String,
+    accountNumber: Number,
+    bankName: { type: String, required: true },
+    privateKey: { type: String, required: true },
     name: String
   },
   date: Date,

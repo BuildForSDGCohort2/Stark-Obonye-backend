@@ -3,20 +3,28 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 const stokvelSchema = Schema({
   title: String,
-  balance: String,
+  wallet: [
+    {
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Wallet'
+      },
+      accountNumber: Number,
+      address: String,
+      privateKey: String,
+      name: String,
+      balance: Number
+    }
+  ],
   cause: String,
-  wallet: Object,
   members: [
     {
       id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Costumer'
+        ref: 'User'
       },
-      name1: String,
-      balance: Number,
-      randBalance: Number,
-      tokenBalance: Number,
-      Wallet: Object,
+      firstName: String,
+      lastName: String,
       mobilePhoneNumber: String,
       identityNumber: String
     }

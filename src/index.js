@@ -4,6 +4,7 @@ import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import { json } from 'body-parser';
 import dbConnection from './util/db';
+import walletRouter from './routes/wallet.route';
 
 const port = process.env.PORT || 3000;
 const swaggerDoc = Yaml.load('src/openapi.yml');
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(json());
 /** --- middleware ---- */
 // app.use('/api', indexRouter);
-// app.use('/api/auth', userRouter);
+app.use('/api/v1/wallet', walletRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 /** database connection */

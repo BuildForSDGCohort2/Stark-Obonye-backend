@@ -10,7 +10,7 @@ export default class AuthController {
     }
     this.user = new User(userModel);
     this.user.password = await bcrypt.hash(this.user.password, 10);
-    return this.user.save();
+    return this.user.save(); // this is bad practice
   }
 
   async postLogin(userModel) {
