@@ -7,7 +7,7 @@ const walletSchema = Schema({
     ref: 'User'
   },
   accountNumber: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     required: true,
     unique: true
   },

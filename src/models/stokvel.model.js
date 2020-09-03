@@ -5,7 +5,7 @@ const stokvelSchema = Schema({
   wallet: [
     {
       accountNumber: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Number,
         required: true,
         ref: 'Wallet'
       },
