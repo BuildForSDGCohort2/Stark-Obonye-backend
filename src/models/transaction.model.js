@@ -3,14 +3,18 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const transactionSchema = Schema({
+  accountNumber: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Wallet'
+  },
   fromWallet: {
-    accountNumber: Number,
+    accountNumber: mongoose.Schema.Types.ObjectId,
     bankName: { type: String, required: true },
     privateKey: { type: String, required: true },
     name: String
   },
   toWallet: {
-    accountNumber: Number,
+    accountNumber: mongoose.Schema.Types.ObjectId,
     bankName: { type: String, required: true },
     privateKey: { type: String, required: true },
     name: String

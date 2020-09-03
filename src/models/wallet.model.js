@@ -6,12 +6,30 @@ const walletSchema = Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  accountNumber: Number,
-  address: String,
-  privateKey: String,
-  name: String,
-  balance: Number
+  accountNumber: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  firstName: {
+    type: String,
+    required: true,
+    ref: 'User'
+  },
+  lastName: {
+    type: String,
+    required: true,
+    ref: 'User'
+  },
+  balance: {
+    type: Number,
+    required: true
+  }
 });
 
-const Wallet = mongoose.Model('Wallet', walletSchema);
+const Wallet = mongoose.model('Wallet', walletSchema);
 export default Wallet;
