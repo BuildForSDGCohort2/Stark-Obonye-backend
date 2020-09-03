@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const transactionSchema = Schema({
   accountNumber: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     ref: 'Wallet'
   },
   fromWallet: {
