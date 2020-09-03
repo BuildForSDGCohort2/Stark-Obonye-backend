@@ -23,5 +23,18 @@ router.post('/register', async (req, res) => {
   }
 });
 
+router.post('/signin', async (req, res) => {
+  try {
+    const user = {
+      email: req.body.email,
+      password: req.body.password
+    };
+    const doc = await auth.postLogin(user);
+    res.send(doc);
+  } catch (error) {
+    res.status(400).send({ error: error.message });
+  }
+});
+
 const userRoute = router;
 export default userRoute;
