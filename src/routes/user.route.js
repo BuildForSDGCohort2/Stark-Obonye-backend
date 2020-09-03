@@ -15,9 +15,9 @@ router.post('/register', async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName
     };
-    // const doc = await auth.registerUser(user);
-    const doc = user;
-    res.send(doc.userId);
+    const doc = await auth.registerUser(user);
+    // eslint-disable-next-line no-underscore-dangle
+    res.send(doc._id);
   } catch (e) {
     res.status(400).send({ error: e.message });
   }
