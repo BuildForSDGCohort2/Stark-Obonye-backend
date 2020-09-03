@@ -2,44 +2,65 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 const stokvelSchema = Schema({
-  title: String,
-  balance: String,
+  wallet: [
+    {
+      accountNumber: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Wallet'
+      },
+      balance: {
+        type: Number,
+        required: true
+      }
+    }
+  ],
   cause: String,
-  wallet: Object,
+  groupName: {
+    type: String,
+    required: true,
+    unique: true
+  },
   members: [
     {
       id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Costumer'
+        ref: 'User'
       },
-      name1: String,
-      balance: Number,
-      randBalance: Number,
-      tokenBalance: Number,
-      Wallet: Object,
-      mobilePhoneNumber: String,
-      identityNumber: String
+      firstName: {
+        type: String,
+        required: true,
+        ref: 'User'
+      },
+      lastName: {
+        type: String,
+        required: true,
+        ref: 'User'
+      }
     }
   ],
+  manager: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    mobilePhoneNumber: {
+      type: Number,
+      required: true,
+      ref: 'User'
+    },
+    identityNumber: {
+      type: Number,
+      required: true,
+      ref: 'User'
+    }
+  },
   transaction: [
     {
       id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Transaction'
-      },
-      fromWallet: {
-        address: String,
-        privateKey: String,
-        name: String
-      },
-      toWallet: {
-        address: String,
-        privateKey: String,
-        name: String
-      },
-      date: Date,
-      value: Number,
-      status: String
+      }
     }
   ]
 });
