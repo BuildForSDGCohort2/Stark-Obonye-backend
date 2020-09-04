@@ -2,7 +2,7 @@ import Wallet from '../models/wallet.model';
 
 export default class WalletController {
   async createWallet(walletObj) {
-    this.wallet = Wallet.findById(walletObj.userId);
+    this.wallet = await Wallet.findById(walletObj.id);
     if (this.wallet) {
       throw new Error('Account already Exists!');
     }
