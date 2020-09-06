@@ -8,7 +8,6 @@ const stokvel = new StokvelController();
 router.post('/create', async (req, res) => {
   try {
     const stokvelGroup = {
-        
     };
     const token = req.header('auth-token');
     if (!token) {
