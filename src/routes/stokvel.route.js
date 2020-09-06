@@ -14,3 +14,13 @@ router.post('/create', async (req, res) => {
     res.send({ error: error.message });
   }
 });
+
+router.get('/retrieve', async (req, res) => {
+  try {
+    const { groupName } = req.body;
+    const doc = await stokvel.getStokvel(groupName);
+    res.send(doc);
+  } catch (error) {
+    res.send({ error: error.message });
+  }
+});
