@@ -1,6 +1,130 @@
- 
 openapi: 3.0.0
 info:
-  title: Team 33H - Online Stokvel
+  title: Team 33H API
   version: 0.0.1
   description: The API docs for Team 33H
+paths:
+  /api/v1/user/register:
+    post:
+      tags:
+        - Authentication
+      description: Creates a new user account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              firstName: John
+              lastName: Doe
+              email: John@example.com
+              password: Password@1
+              mobilePhoneNumber: 75201514
+              identityNumber: 895637943
+      responses:
+        "200":
+          description: User account registration
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  id:
+                    type: string
+                example:
+                  id: 5f521a4c68f00ed2b66b427a
+        "400":
+          $ref: "#/components/responses/GenericError"
+  /api/v1/user/signin:
+    post:
+      tags:
+        - Authentication
+      description: Get the user authentication token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: User sign in response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        "400":
+          $ref: "#/components/responses/GenericError"
+  /api/v1/user/reset-password:
+    post:
+      tags:
+        - Authentication
+      description: resets user password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                email:
+                  type: string
+                oldPassword:
+                  type: string
+                newPassword:
+                  type: string
+      responses:
+        "200":
+          description: password successfully reset/updated
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+        "400":
+          $ref: "#/components/responses/GenericError"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName: 
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+          format: password
+        mobilePhoneNumber:
+          type: number
+        identityNumber:
+          type: number
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+  responses:
+    GenericError:
+      description: Error object
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/Error"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
