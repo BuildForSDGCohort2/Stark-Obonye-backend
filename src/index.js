@@ -6,6 +6,7 @@ import { json } from 'body-parser';
 import dbConnection from './util/db';
 import walletRouter from './routes/wallet.route';
 import userRouter from './routes/user.route';
+import stokvelRouter from './routes/stokvel.route';
 
 const port = process.env.PORT || 3000;
 const swaggerDoc = Yaml.load('src/openapi.yml');

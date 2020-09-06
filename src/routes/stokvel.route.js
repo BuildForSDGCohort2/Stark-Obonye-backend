@@ -24,3 +24,5 @@ router.get('/retrieve', async (req, res) => {
     res.send({ error: error.message });
   }
 });
+const stokvelRouter = router;
+export default stokvelRouter;
