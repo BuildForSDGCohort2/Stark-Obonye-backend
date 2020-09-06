@@ -23,7 +23,7 @@ router.post('/create', async (req, res) => {
     const status = await walletController.createWallet(wallet);
     res.send(status);
   } catch (error) {
-    res.statusCode.send({ error: error.message });
+    res.send({ error: error.message });
   }
 });
 
@@ -41,7 +41,7 @@ router.get('/balance', async (req, res) => {
     const walletObj = await walletController.getWallet(accountNumber);
     res.send(walletObj);
   } catch (error) {
-    res.statusCode.send({ error: error.message });
+    res.send({ error: error.message });
   }
 });
 router.put('/update', async (req, res) => {
@@ -58,7 +58,7 @@ router.put('/update', async (req, res) => {
     const walletObj = await walletController.updateWallet(walletData);
     res.send(walletObj);
   } catch (error) {
-    res.statusCode.send({ error: error.message });
+    res.send({ error: error.message });
   }
 });
 const walletRouter = router;

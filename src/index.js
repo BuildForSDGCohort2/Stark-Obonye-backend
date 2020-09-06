@@ -6,6 +6,7 @@ import { json } from 'body-parser';
 import dbConnection from './util/db';
 import walletRouter from './routes/wallet.route';
 import userRouter from './routes/user.route';
+import transactionsRouter from './routes/transactions.route';
 
 const port = process.env.PORT || 3000;
 const swaggerDoc = Yaml.load('src/openapi.yml');
@@ -18,6 +19,7 @@ app.use(json());
 // app.use('/api', indexRouter);
 app.use('/api/v1/wallet', walletRouter);
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/transactions', transactionsRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 /** database connection */

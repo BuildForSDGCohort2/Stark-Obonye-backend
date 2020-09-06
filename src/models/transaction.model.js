@@ -30,5 +30,5 @@ const transactionSchema = Schema({
   status: String
 });
 
-const Transaction = mongoose.model('Transaction', transactionSchema);
-export default Transaction;
+const WalletTransactions = mongoose.model('WalletTransaction', transactionSchema);
+export default WalletTransactions;
