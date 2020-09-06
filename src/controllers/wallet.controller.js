@@ -17,4 +17,12 @@ export default class WalletController {
     }
     return this.wallet;
   }
+
+  async updateWallet(walletObj) {
+    this.wallet = await (await Wallet.findOne(walletObj.accountNumber)).exec();
+    if (!this.wallet) {
+      throw new Error('Invalid Account Number!');
+    }
+    this.wallet = Wallet(walletObj);
+  }
 }
