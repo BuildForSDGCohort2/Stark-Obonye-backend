@@ -18,6 +18,7 @@ app.use(json());
 // app.use('/api', indexRouter);
 app.use('/api/v1/wallet', walletRouter);
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/stokvel', stokvelRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 /** database connection */

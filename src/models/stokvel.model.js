@@ -54,15 +54,7 @@ const stokvelSchema = Schema({
       required: true,
       ref: 'User'
     }
-  },
-  transaction: [
-    {
-      id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Transaction'
-      }
-    }
-  ]
+  }
 });
 
 const Stokvel = mongoose.model('Stokvel', stokvelSchema);
