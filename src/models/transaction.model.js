@@ -8,21 +8,27 @@ const transactionSchema = Schema({
     ref: 'Wallet'
   },
   fromWallet: {
-    accountNumber: mongoose.Schema.Types.ObjectId,
+    accountNumber: {
+      type: Number,
+      required: true
+    },
     bankName: { type: String, required: true },
     privateKey: { type: String, required: true },
-    name: String
+    reference: String
   },
   toWallet: {
-    accountNumber: mongoose.Schema.Types.ObjectId,
+    accountNumber: { type: Number, required: true },
     bankName: { type: String, required: true },
     privateKey: { type: String, required: true },
-    name: String
+    reference: String
   },
-  date: Date,
-  value: Number,
+  date: {
+    type: Date,
+    default: Date.now()
+  },
+  amount: Number,
   status: String
 });
 
-const Transaction = mongoose.model('Transaction', transactionSchema);
-export default Transaction;
+const WalletTransactions = mongoose.model('WalletTransaction', transactionSchema);
+export default WalletTransactions;

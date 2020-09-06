@@ -30,7 +30,7 @@ router.post('/signin', async (req, res) => {
       password: req.body.password
     };
     const doc = await auth.postLogin(user);
-    res.send(doc);
+    res.header('auth-token', doc).send(doc);
   } catch (error) {
     res.status(400).send({ error: error.message });
   }

@@ -2,19 +2,6 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 const stokvelSchema = Schema({
-  wallet: [
-    {
-      accountNumber: {
-        type: Number,
-        required: true,
-        ref: 'Wallet'
-      },
-      balance: {
-        type: Number,
-        required: true
-      }
-    }
-  ],
   cause: String,
   groupName: {
     type: String,
@@ -44,15 +31,27 @@ const stokvelSchema = Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },
+    firstName: {
+      type: String,
+      required: true,
+      ref: 'User'
+    },
+    lastName: {
+      type: String,
+      required: true,
+      ref: 'User'
+    },
     mobilePhoneNumber: {
       type: Number,
       required: true,
       ref: 'User'
-    },
-    identityNumber: {
+    }
+  },
+  wallet: {
+    accountNumber: {
       type: Number,
-      required: true,
-      ref: 'User'
+      ref: 'Wallet',
+      required: true
     }
   }
 });
