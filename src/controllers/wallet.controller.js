@@ -9,4 +9,12 @@ export default class WalletController {
     this.wallet = new Wallet(walletObj);
     return this.wallet.save();
   }
+
+  async getWallet(accountNumber) {
+    this.wallet = await Wallet.findOne(accountNumber).exec();
+    if (!this.wallet) {
+      throw new Error('Invalid Account Number!');
+    }
+    return this.wallet;
+  }
 }
