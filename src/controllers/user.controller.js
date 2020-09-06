@@ -10,7 +10,7 @@ export default class AuthController {
     }
     this.user = new User(userModel);
     this.user.password = await bcrypt.hash(this.user.password, 10);
-    return this.user.save();
+    return this.user.save(); // this is bad practice
   }
 
   async postLogin(userModel) {
@@ -23,7 +23,7 @@ export default class AuthController {
       throw new Error('Incorrect email or password');
     }
     const token = jwt.sign({ id: this.user.id }, '1913155164FC4B4DA16CCEA62C6C98A6', { expiresIn: '2Hrs' });
-    return { token };
+    return token;
   }
 
   async resetPassword(userData) {
