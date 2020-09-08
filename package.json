@@ -7,9 +7,9 @@
   "scripts": {
     "test": "mocha ./tests/**/*.spec.js",
     "lint": "npm run clean && eslint . src/",
-    "dev": "nodemon --exec ENVIRONMENT=development babel-node src/index.js",
+    "dev": "nodemon --exec ENODE_ENV=development babel-node src/index.js",
     "build": "babel src/ --out-dir dist",
-    "start": "node ENVIRONMENT=production dist/index.js",
+    "start": "node NODE_ENV=production dist/index.js",
     "clean": "rimraf dist",
     "serve": "node dist/index.js",
     "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'"
