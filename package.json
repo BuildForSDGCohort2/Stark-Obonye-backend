@@ -12,7 +12,7 @@
     "lint": "npm run clean && eslint . src/",
     "dev": "NODE_ENV=development nodemon --exec babel-node src/index.js",
     "build": "babel  src/ --out-dir dist",
-    "start": "node dist/index.js",
+    "start": "NODE_ENV=production node dist/index.js",
     "clean": "rimraf dist",
     "serve": "node dist/index.js",
     "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'"
