@@ -12,8 +12,7 @@ dotenv.config();
 // }
 
 mongoose.connect(
-  process.env.DB_PATH_PROD
-   || process.env.DB_PATH_DEV, { useNewUrlParser: true, useUnifiedTopology: true }
+  process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }
 );
 const dbConnection = mongoose.connection;
 export default dbConnection;
