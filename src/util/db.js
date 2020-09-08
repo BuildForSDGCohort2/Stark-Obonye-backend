@@ -1,15 +1,11 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import dotenv, { config } from 'dotenv';
 
 /** remote connection */
 /* const uri = "mongodb+srv://team_275:04tLXMQ4mmllwy2P@cluster0-dghpw.mongodb.net/test?retryWrites=true&w=majority"; */
 /** localhost */
 dotenv.config();
-let uri = process.env.DB_PATH_PROD;
-if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  uri = process.env.DB_PATH_DEV;
-}
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(config.NODE_ENV.DB_PATH_PROD, { useNewUrlParser: true, useUnifiedTopology: true });
 const dbConnection = mongoose.connection;
 export default dbConnection;
