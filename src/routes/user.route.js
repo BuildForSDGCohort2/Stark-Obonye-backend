@@ -17,7 +17,7 @@ router.post('/register', async (req, res, next) => {
     const doc = await auth.registerUser(user);
     // eslint-disable-next-line no-underscore-dangle
     res.send(doc._id);
-    next();
+    // next();
   } catch (e) {
     res.status(400).send({ error: e.message });
   }
