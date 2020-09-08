@@ -4,7 +4,7 @@ import AuthController from '../controllers/user.controller';
 const router = express.Router();
 const auth = new AuthController();
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
   try {
     const user = {
       email: req.body.email,
@@ -17,6 +17,7 @@ router.post('/register', async (req, res) => {
     const doc = await auth.registerUser(user);
     // eslint-disable-next-line no-underscore-dangle
     res.send(doc._id);
+    next();
   } catch (e) {
     res.status(400).send({ error: e.message });
   }
