@@ -187,6 +187,28 @@ paths:
                 
         "400":
           $ref: "#/components/responses/GenericError"
+  /api/v1/stokvel/create:
+    post:
+      tags:
+        - Stokvel
+      description: add a new Stokvel 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Stokvel"
+      responses:
+        "200":
+          description: A status message
+          content:
+            applicationn/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    type: string
+        "400":
+          $ref: "#/components/responses/GenericError"
 components:
   schemas:
     User:
@@ -248,6 +270,38 @@ components:
               type: string
             reference:
               type: string
+    Stokvel:
+      type: object
+      properties:
+        cause: 
+          type: string
+        groupName:
+          type: string
+        members:
+          type: object
+          properties:
+            id:
+              type: string
+            firstName:
+              type: string
+            lastName:
+              type: string
+        manager:
+          type: object
+          properties:
+            id:
+              type: string
+            firstName:
+              type: string
+            lastName:
+              type: string
+            mobilePhoneNumber:
+              type: string
+        wallet:
+          type: object
+          properties:
+            accountNumber:
+              type: number
     Error:
       type: object
       properties:
