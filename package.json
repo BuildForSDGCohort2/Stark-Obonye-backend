@@ -4,6 +4,9 @@
   "private": true,
   "description": "A server for a stokvel app to help users save and manage their finances online",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "mocha ./tests/**/*.spec.js",
     "lint": "npm run clean && eslint . src/",
