@@ -35,8 +35,16 @@ router.post('/signin', async (req, res) => {
     res.status(400).send({ error: error.message });
   }
 });
-router.get('/test', (req, res) => {
-  res.send({ message: 'testing' });
+router.post('/test', (req, res) => {
+  const user = {
+    email: req.body.email,
+    password: req.body.password,
+    mobilePhoneNumber: req.body.mobilePhoneNumber,
+    identityNumber: req.body.identityNumber,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+  };
+  res.send({ message: user });
 });
 
 const userRoute = router;
