@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model';
@@ -10,7 +11,7 @@ export default class AuthController {
     }
     this.user = new User(userModel);
     this.user.password = await bcrypt.hash(this.user.password, 10);
-    return this.user.save(); // this is bad practice
+    return this.user.save().then().catch((err) => console.log(err)); // this is bad practice
   }
 
   async postLogin(userModel) {
