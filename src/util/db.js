@@ -5,11 +5,9 @@ import dotenv from 'dotenv';
 /* const uri = "mongodb+srv://team_275:04tLXMQ4mmllwy2P@cluster0-dghpw.mongodb.net/test?retryWrites=true&w=majority"; */
 /** localhost */
 dotenv.config();
-let uri = '';
+let uri = process.env.DB_PATH_PROD;
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   uri = process.env.DB_PATH_DEV;
-} else {
-  uri = process.env.DB_PATH_PROD;
 }
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
