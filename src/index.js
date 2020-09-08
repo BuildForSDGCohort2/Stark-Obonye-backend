@@ -2,7 +2,7 @@
 import Yaml from 'yamljs';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
-import bodyParser from 'body-parser';
+import { json } from 'body-parser';
 import dbConnection from './util/db';
 import walletRouter from './routes/wallet.route';
 import userRouter from './routes/user.route';
@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 /** --- middleware ---- */
-app.use(bodyParser);
+app.use(json());
 /** --- middleware ---- */
 // app.use('/api', indexRouter);
 app.use('/api/v1/wallet', walletRouter);
@@ -32,9 +32,9 @@ dbConnection.once(
 );
 /** database connection */
 
-if (process.env.NODE_ENV === 'production') {
+/* if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
-}
+} */
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
