@@ -35,6 +35,9 @@ router.post('/signin', async (req, res) => {
     res.status(400).send({ error: error.message });
   }
 });
+router.get('/test', (req, res) => {
+  res.send({ message: 'testing' });
+});
 
 const userRoute = router;
 export default userRoute;
