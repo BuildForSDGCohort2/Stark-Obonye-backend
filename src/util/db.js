@@ -24,6 +24,7 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
+connectDB();
 
-const dbConnection = connectDB;
+const dbConnection = mongoose.connection;
 export default dbConnection;
