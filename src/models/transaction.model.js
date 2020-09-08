@@ -13,13 +13,11 @@ const transactionSchema = Schema({
       required: true
     },
     bankName: { type: String, required: true },
-    privateKey: { type: String, required: true },
     reference: String
   },
   toWallet: {
     accountNumber: { type: Number, required: true },
     bankName: { type: String, required: true },
-    privateKey: { type: String, required: true },
     reference: String
   },
   date: {
