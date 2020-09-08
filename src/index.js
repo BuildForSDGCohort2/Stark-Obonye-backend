@@ -2,7 +2,7 @@
 import Yaml from 'yamljs';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
-import { json } from 'body-parser';
+import bodyParser from 'body-parser';
 import dbConnection from './util/db';
 import walletRouter from './routes/wallet.route';
 import userRouter from './routes/user.route';
@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 /** --- middleware ---- */
-app.use(json());
+app.use(bodyParser);
 /** --- middleware ---- */
 // app.use('/api', indexRouter);
 app.use('/api/v1/wallet', walletRouter);
