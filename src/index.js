@@ -35,7 +35,12 @@ dbConnection.once(
 /* if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 } */
-app.listen(port, () => {
+const server = app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
+});
+
+server.on('clientError', (err, socket) => {
+  console.error(err);
+  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
