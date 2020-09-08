@@ -2,17 +2,19 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 /** remote connection */
-// const uri = 'mongodb+srv://team33H:T3@m33h2020@cluster0.dghpw.mongodb.net/test?retryWrites=true&w=majority';
+// const uri = ;
 /** localhost */
 dotenv.config();
-// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-//   uri = process.env.DB_PATH_DEV;
-// } else {
-//   uri = process.env.DB_PATH_PROD;
-// }
+let uri = '';
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  uri = process.env.DB_PATH_DEV;
+} else {
+  uri = 'mongodb+srv://team33H:T3@m33h2020@cluster0.dghpw.mongodb.net/sikaDB?retryWrites=true&w=majority';
+}
 
 mongoose.connect(
-  process.env.MONGODB_URI || process.env.DB_PATH_DEV,
+  uri,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 const dbConnection = mongoose.connection;
