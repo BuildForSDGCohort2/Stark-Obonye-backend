@@ -20,7 +20,7 @@ client.connect((err) => {
   // const collection = client.db('sikaDB').collection('users');
   // perform actions on the collection object
   // eslint-disable-next-line no-console
-  console.log(err.message);
+  console.log(err);
   // client.close();
 });
 
