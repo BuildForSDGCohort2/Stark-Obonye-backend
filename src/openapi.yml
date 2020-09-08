@@ -23,7 +23,7 @@ paths:
               identityNumber: 895637943
       responses:
         "200":
-          description: User account registration
+          description: Ok
           content:
             application/json:
               schema:
@@ -39,7 +39,7 @@ paths:
     post:
       tags:
         - Authentication
-      description: Get the user authentication token
+      description: Get User authentication token
       requestBody:
         content:
           application/json:
@@ -50,9 +50,12 @@ paths:
                   type: string
                 password:
                   type: string
+              example:
+                email: john@example.com
+                password: Password@1
       responses:
         "200":
-          description: User sign in response
+          description: Authentication token
           content:
             application/json:
               schema:
@@ -66,7 +69,7 @@ paths:
     post:
       tags:
         - Authentication
-      description: resets user password
+      description: Ok
       requestBody:
         content:
           application/json:
@@ -81,7 +84,7 @@ paths:
                   type: string
       responses:
         "200":
-          description: password successfully reset/updated
+          description: Ok
           content:
             application/json:
               schema:
@@ -93,6 +96,119 @@ paths:
                     type: boolean
         "400":
           $ref: "#/components/responses/GenericError"
+  /api/v1/wallet/create:
+    post:
+      tags:
+        - Wallet
+      description: add a new wallet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schema/Wallet"
+            example:
+              id: 5f521a4c68f00ed2b66b427a
+              accountNumber: 12348383883
+              address: "Private Bag ccc, Gabs, BW"
+              firstName: John
+              lastName: Doe
+              deposit: 300
+      responses:
+        "200":
+          description: account number
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  accountNumber:
+                    type: number
+        "400":
+          $ref: "#/components/responses/GenericError"
+  /api/v1/wallet/balance:
+    get:
+      tags:
+        - Wallet
+      description: retrieve wallet information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: string
+            example:
+              accountNumber: 12348383883
+      responses:
+        "200":
+          description: A wallet object
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  id:
+                    type: string
+                  accountNumber:
+                    type: number
+                  address:
+                    type: string
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  balance:
+                    type: number
+        "400":
+          $ref: "#/components/responses/GenericError"
+  /api/v1/transactions/history:
+    get:
+      tags:
+        - Transactions
+      description: retrieve wallet transactions history
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                id:
+                  type: string
+            example:
+              accountNumber: 12348383883
+      responses:
+        "200":
+          description: An array list of transaction
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+                
+        "400":
+          $ref: "#/components/responses/GenericError"
+  /api/v1/stokvel/create:
+    post:
+      tags:
+        - Stokvel
+      description: add a new Stokvel 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Stokvel"
+      responses:
+        "200":
+          description: A status message
+          content:
+            applicationn/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    type: string
+        "400":
+          $ref: "#/components/responses/GenericError"
 components:
   schemas:
     User:
@@ -100,7 +216,7 @@ components:
       properties:
         firstName:
           type: string
-        lastName: 
+        lastName:
           type: string
         email:
           type: string
@@ -111,6 +227,81 @@ components:
           type: number
         identityNumber:
           type: number
+    Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        accountNumber:
+          type: number
+        address:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        deposit:
+          type: number
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+        wallet:
+          type: object
+          properties:
+            accountNumber:
+              type: number
+        credit:
+          type: object
+          properties:
+            accountNumber:
+              type: number
+            bankName:
+              type: string
+            reference:
+              type: string
+        debit:
+          type: object
+          properties:
+            accountNumber:
+              type: number
+            bankName:
+              type: string
+            reference:
+              type: string
+    Stokvel:
+      type: object
+      properties:
+        cause: 
+          type: string
+        groupName:
+          type: string
+        members:
+          type: object
+          properties:
+            id:
+              type: string
+            firstName:
+              type: string
+            lastName:
+              type: string
+        manager:
+          type: object
+          properties:
+            id:
+              type: string
+            firstName:
+              type: string
+            lastName:
+              type: string
+            mobilePhoneNumber:
+              type: string
+        wallet:
+          type: object
+          properties:
+            accountNumber:
+              type: number
     Error:
       type: object
       properties:
