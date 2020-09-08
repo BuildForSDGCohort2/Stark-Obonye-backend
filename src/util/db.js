@@ -6,6 +6,6 @@ import dotenv, { config } from 'dotenv';
 /** localhost */
 dotenv.config();
 
-mongoose.connect(config.NODE_ENV.DB_PATH_PROD, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(config.DB_PATH_PROD, { useNewUrlParser: true, useUnifiedTopology: true });
 const dbConnection = mongoose.connection;
 export default dbConnection;
