@@ -8,7 +8,7 @@
     "test": "mocha ./tests/**/*.spec.js",
     "lint": "npm run clean && eslint . src/",
     "dev": "nodemon --exec ENODE_ENV=development babel-node src/index.js",
-    "build": "babel src/ --out-dir dist",
+    "build": "babel --mode production src/ --out-dir dist",
     "start": "node NODE_ENV=production dist/index.js",
     "clean": "rimraf dist",
     "serve": "node dist/index.js",
