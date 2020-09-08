@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 /** remote connection */
-const uri = 'mongodb+srv://team33H:T3@m33h2020@cluster0.dghpw.mongodb.net/test?retryWrites=true&w=majority';
+// const uri = 'mongodb+srv://team33H:T3@m33h2020@cluster0.dghpw.mongodb.net/test?retryWrites=true&w=majority';
 /** localhost */
 dotenv.config();
 // if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
@@ -11,6 +11,9 @@ dotenv.config();
 //   uri = process.env.DB_PATH_PROD;
 // }
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(
+  process.env.DB_PATH_PROD
+   || process.env.DB_PATH_DEV, { useNewUrlParser: true, useUnifiedTopology: true }
+);
 const dbConnection = mongoose.connection;
 export default dbConnection;
