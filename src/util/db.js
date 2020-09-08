@@ -13,7 +13,7 @@ dotenv.config();
 
 const { MongoClient } = require('mongodb');
 
-const uri = 'mongodb+srv://team33H:t3am33h2020@cluster0.dghpw.mongodb.net/sikaDB?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://team33H:t3@m33h2020@cluster0.dghpw.mongodb.net/sikaDB?retryWrites=true&w=majority';
 const client = new MongoClient(uri, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 client.connect((err) => {
