@@ -17,7 +17,7 @@ const uri = 'mongodb+srv://team33H:t3@m33h2020@cluster0.dghpw.mongodb.net/sikaDB
 const client = new MongoClient(uri, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 client.connect((err) => {
-  const collection = client.db('test').collection('devices');
+  const collection = client.db('sikaDB').collection('users');
   // perform actions on the collection object
   // eslint-disable-next-line no-console
   console.log(collection, err);
