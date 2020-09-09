@@ -9,7 +9,7 @@ import userRouter from './routes/user.route';
 import stokvelRouter from './routes/stokvel.route';
 import transactionsRouter from './routes/transactions.route';
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const swaggerDoc = Yaml.load('src/openapi.yml');
 const app = express();
 app.use(express.json());
