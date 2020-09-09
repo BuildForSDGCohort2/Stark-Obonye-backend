@@ -35,7 +35,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - run: sudo systemctl start mongod
     - run: npm ci
       env:
         # use mongodb for the host here because we have specified a container for the job.
