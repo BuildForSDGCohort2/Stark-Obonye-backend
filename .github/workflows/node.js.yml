@@ -25,7 +25,7 @@ jobs:
 
     services:
       mongodb:
-        image: mongo
+        image: healthcheck/mongo
         ports:
         - 27017:27017
           
@@ -42,6 +42,7 @@ jobs:
         # If we were running the job on the VM this would be localhost
         MONGODB_HOST: mongodb
         MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
+    - run: sudo systemctl start mongod
       working-directory: ${{ env.working-directory }}
     - run: npm install
       working-directory: ${{ env.working-directory }}
