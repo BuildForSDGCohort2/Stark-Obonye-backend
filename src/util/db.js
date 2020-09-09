@@ -2,17 +2,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-/** remote connection */
-// const uri = ;
-/** localhost */
 dotenv.config();
-// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-//   uri = process.env.DB_PATH_DEV;
-// } else {
-//   uri = process.env.DB_PATH_PROD;
-// }
-
-const test = process.env.TEST_KEY;
 
 const db = process.env.MONGODB_URI;
 try {
@@ -20,7 +10,7 @@ try {
     useUnifiedTopology: true,
     useNewUrlParser: true
   });
-  console.log(`MongoDB is Connected...${test}`);
+  console.log('MongoDB is Connected...');
 } catch (err) {
   console.error(err);
   process.exit(1);

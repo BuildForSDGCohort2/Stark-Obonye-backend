@@ -32,9 +32,6 @@ dbConnection.once(
 );
 /** database connection */
 
-/* if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-} */
 const server = app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
