@@ -14,7 +14,7 @@ dotenv.config();
 
 const test = process.env.TEST_KEY;
 
-const db = 'mongodb+srv://team33H:T3@m33h2020@cluster0.dghpw.mongodb.net/sikaDB?retryWrites=true&w=majority';
+const db = process.env.MONGODB_URI;
 try {
   mongoose.connect(db, {
     useUnifiedTopology: true,
