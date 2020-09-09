@@ -50,5 +50,3 @@ jobs:
       working-directory: ${{ env.working-directory }}
     - run: npm run test
       working-directory: ${{ env.working-directory }}
-    - run: npm start
-      working-directory: ${{ env.working-directory }}
