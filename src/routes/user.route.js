@@ -17,9 +17,10 @@ router.post('/register', async (req, res, next) => {
     const doc = await auth.registerUser(user);
     // eslint-disable-next-line no-underscore-dangle
     res.send(doc._id);
-    next();
+    // next();
   } catch (e) {
     res.status(400).send({ error: e.message });
+    next();
   }
 });
 
@@ -34,6 +35,17 @@ router.post('/signin', async (req, res) => {
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
+});
+router.post('/test', (req, res) => {
+  const user = {
+    email: req.body.email,
+    password: req.body.password,
+    mobilePhoneNumber: req.body.mobilePhoneNumber,
+    identityNumber: req.body.identityNumber,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+  };
+  res.send({ message: user });
 });
 
 const userRoute = router;

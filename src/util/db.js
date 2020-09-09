@@ -1,28 +1,20 @@
+/* eslint-disable no-console */
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-/** remote connection */
-// const uri = ;
-/** localhost */
 dotenv.config();
-// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-//   uri = process.env.DB_PATH_DEV;
-// } else {
-//   uri = process.env.DB_PATH_PROD;
-// }
 
-const { MongoClient } = require('mongodb');
-
-const uri = 'mongodb+srv://team33H:T3@m33h2020@cluster0.dghpw.mongodb.net/sikaDB?retryWrites=true&w=majority';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.set('useCreateIndex', true);
-client.connect((err) => {
-  // const collection = client.db('sikaDB').collection('users');
-  // perform actions on the collection object
-  // eslint-disable-next-line no-console
-  console.log(err);
-  // client.close();
-});
+const db = process.env.MONGODB_URI;
+try {
+  mongoose.connect(db, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  });
+  console.log('MongoDB is Connected...');
+} catch (err) {
+  console.error(err);
+  process.exit(1);
+}
 
 const dbConnection = mongoose.connection;
 export default dbConnection;

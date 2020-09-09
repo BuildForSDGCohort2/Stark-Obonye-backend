@@ -9,7 +9,7 @@ import userRouter from './routes/user.route';
 import stokvelRouter from './routes/stokvel.route';
 import transactionsRouter from './routes/transactions.route';
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const swaggerDoc = Yaml.load('src/openapi.yml');
 const app = express();
 app.use(express.json());
@@ -32,9 +32,6 @@ dbConnection.once(
 );
 /** database connection */
 
-/* if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-} */
 const server = app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
