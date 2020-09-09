@@ -21,7 +21,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 14.x ]
+        node-version: [ 10.x, 12.x, 13.x, 14.x ]
+        mongodb-version: [3.6, 4.0, 4.2]
 
     steps:
     - uses: actions/checkout@v2
@@ -29,12 +30,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+
+    - name: Start MongoDB v${{ matrix.mongodb-version }}
+      uses: supercharge/mongodb-github-action@1.2.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+
       env:
         # use mongodb for the host here because we have specified a container for the job.
         # If we were running the job on the VM this would be localhost
         MONGODB_HOST: mongodb
         MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
+    - run: npm ci
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
