@@ -32,7 +32,12 @@ jobs:
         - 27017:27017
           
     steps:
-    - uses: actions/checkout@v2     
+    - uses: actions/checkout@v2
+      env:
+        # use mongodb for the host here because we have specified a container for the job.
+        # If we were running the job on the VM this would be localhost
+        MONGODB_HOST: mongodb
+        MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}     
     - run: npm ci
       working-directory: ${{ env.working-directory }}
     - run: npm install
@@ -45,8 +50,3 @@ jobs:
       working-directory: ${{ env.working-directory }}
     - run: npm start
       working-directory: ${{ env.working-directory }}
-      env:
-        # use mongodb for the host here because we have specified a container for the job.
-        # If we were running the job on the VM this would be localhost
-        MONGODB_HOST: mongodb
-        MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
