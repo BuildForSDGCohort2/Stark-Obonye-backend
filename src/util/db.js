@@ -9,7 +9,7 @@ try {
   mongoose.connect(db, {
     useUnifiedTopology: true,
     useNewUrlParser: true
-  });
+  }).then().catch((err) => console.log(err));
   console.log('MongoDB is Connected...');
 } catch (err) {
   console.error(err);
