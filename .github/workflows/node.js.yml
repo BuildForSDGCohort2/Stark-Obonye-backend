@@ -1,12 +1,6 @@
 name: NodeJS and MongoDB CI
-
 on:
-  push:
-    branches:
-    - master
-  pull_request:
-    branches:
-    - master
+  delete:
     
 defaults:
   run:
