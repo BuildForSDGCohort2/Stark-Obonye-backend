@@ -12,7 +12,7 @@ dotenv.config();
 //   uri = process.env.DB_PATH_PROD;
 // }
 
-const test = process.env.config.TEST_KEY;
+const test = process.env.TEST_KEY;
 
 const db = 'mongodb+srv://team33H:T3@m33h2020@cluster0.dghpw.mongodb.net/sikaDB?retryWrites=true&w=majority';
 try {
