@@ -9,7 +9,7 @@ const HOST = process.env.MONGODB_HOST || 'localhost';
 
 dotenv.config();
 
-const db = process.env.MONGODB_URI || `mongodb://${HOST}:${PORT}/sikaDB?authSource=admin`;
+const db = process.env.MONGODB_URI || `mongodb://${HOST}:${PORT}/sikaDB`;
 // try {
 //   mongoose.connect(db, {
 //     useUnifiedTopology: true,
