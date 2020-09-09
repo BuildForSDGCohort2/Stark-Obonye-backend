@@ -22,5 +22,8 @@ router.get('/history', async (req, res) => {
     res.send({ error: error.message });
   }
 });
+router.put('/deposit', (req, res) => {
+  res.send({ message: 'Success' });
+});
 const transactionsRouter = router;
 export default transactionsRouter;
