@@ -35,14 +35,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-   
+    - run: sudo systemctl start mongod
     - run: npm ci
       env:
         # use mongodb for the host here because we have specified a container for the job.
         # If we were running the job on the VM this would be localhost
         MONGODB_HOST: mongodb
         MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
-    - run: sudo systemctl start mongod
       working-directory: ${{ env.working-directory }}
     - run: npm install
       working-directory: ${{ env.working-directory }}
