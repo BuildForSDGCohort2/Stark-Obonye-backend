@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const db = process.env.MONGODB_URI;
+const db = process.env.MONGODB_URI || 'mongodb://localhost:27017/sikaDB';
 try {
   mongoose.connect(db, {
     useUnifiedTopology: true,
