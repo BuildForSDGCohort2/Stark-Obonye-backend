@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, develop ]
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 10.x, 12.x, 13.x, 14.x ]
-        mongodb-version: [3.6, 4.0, 4.2]
+        mongodb-version: [ 3.6, 4.0, 4.2 ]
 
     steps:
     - uses: actions/checkout@v2
