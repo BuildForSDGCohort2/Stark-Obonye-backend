@@ -35,13 +35,12 @@ jobs:
       uses: supercharge/mongodb-github-action@1.2.0
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
-
+    - run: npm ci
       env:
         # use mongodb for the host here because we have specified a container for the job.
         # If we were running the job on the VM this would be localhost
         MONGODB_HOST: mongodb
         MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
-    - run: npm ci
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
