@@ -1,11 +1,13 @@
 name: NodeJS and MongoDB CI
 on:
-  pull-request:
-  - master
-  - develop
   push:
-  - master
-  - develop
+    branches: 
+      - master
+        - develop
+  pull_request:
+      branches:
+      - master
+      - develop
     
 defaults:
   run:
