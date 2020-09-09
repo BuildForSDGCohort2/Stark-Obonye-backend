@@ -6,12 +6,10 @@ const { MongoClient } = require('mongodb');
 
 const PORT = process.env.MONGODB_PORT || 27017;
 const HOST = process.env.MONGODB_HOST || 'localhost';
-const DB_USER = 'MrObonye';
-const PASSWORD = encodeURIComponent('Theodore');
 
 dotenv.config();
 
-const db = process.env.MONGODB_URI || `mongodb://${DB_USER}:${PASSWORD}@${HOST}:${PORT}/sikaDB?authSource=admin`;
+const db = process.env.MONGODB_URI || `mongodb://${HOST}:${PORT}/sikaDB`;
 // try {
 //   mongoose.connect(db, {
 //     useUnifiedTopology: true,
