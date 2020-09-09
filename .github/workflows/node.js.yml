@@ -36,7 +36,6 @@ jobs:
       with:
         node-version: '14.x'
    
-    - run: show dbs    
     - run: npm ci
       env:
         # use mongodb for the host here because we have specified a container for the job.
