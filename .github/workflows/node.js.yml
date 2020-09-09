@@ -1,6 +1,11 @@
 name: NodeJS and MongoDB CI
 on:
-  delete:
+  pull-request:
+  - master
+  - develop
+  push:
+  - master
+  - develop
     
 defaults:
   run:
