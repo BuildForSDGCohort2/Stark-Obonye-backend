@@ -35,10 +35,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - name: Start MongoDB v4.0
+    - name: Start MongoDB v3.6.8
       uses: supercharge/mongodb-github-action@1.3.0
       with:
-        mongodb-version: '4.0'
+        mongodb-version: '3.6.8'
       env:
         # use mongodb for the host here because we have specified a container for the job.
         # If we were running the job on the VM this would be localhost
