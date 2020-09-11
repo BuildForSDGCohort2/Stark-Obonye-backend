@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import Yaml from 'yamljs';
 import express from 'express';
+import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import { json } from 'body-parser';
 import dbConnection from './util/db';
@@ -23,6 +24,7 @@ app.use('/api/v1/user', userRouter);
 app.use('/api/v1/stokvel', stokvelRouter);
 app.use('/api/v1/transactions', transactionsRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use(cors());
 
 /** database connection */
 dbConnection.on('error', console.error.bind(console, 'connection error:'));
@@ -31,6 +33,7 @@ dbConnection.once(
   console.info.bind(console, 'connection established:')
 );
 /** database connection */
+
 
 const server = app.listen(port, () => {
   // eslint-disable-next-line no-console
