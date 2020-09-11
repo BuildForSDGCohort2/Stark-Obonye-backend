@@ -34,7 +34,6 @@ dbConnection.once(
 );
 /** database connection */
 
-
 const server = app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
