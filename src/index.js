@@ -19,17 +19,18 @@ app.use(express.json());
 app.use(json());
 /** --- middleware ---- */
 // app.use('/api', indexRouter);
+app.use(cors());
 app.use('/api/v1/wallet', walletRouter);
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/stokvel', stokvelRouter);
 app.use('/api/v1/transactions', transactionsRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-app.use(cors());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
 
 /** database connection */
 dbConnection.on('error', console.error.bind(console, 'connection error:'));
