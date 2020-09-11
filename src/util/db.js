@@ -2,7 +2,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-const { MongoClient } = require('mongodb');
+// const { MongoClient } = require('mongodb');
 
 const PORT = process.env.MONGODB_PORT || 27017;
 const HOST = process.env.MONGODB_HOST || 'localhost';
