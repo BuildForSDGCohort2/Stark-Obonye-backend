@@ -16,7 +16,7 @@ router.post('/register', async (req, res, next) => {
     };
     const doc = await auth.registerUser(user);
     // eslint-disable-next-line no-underscore-dangle
-    res.send(doc._id);
+    res.send({ id: doc._id });
     // next();
   } catch (e) {
     res.status(400).send({ error: e.message });
@@ -31,7 +31,7 @@ router.post('/signin', async (req, res) => {
       password: req.body.password
     };
     const doc = await auth.postLogin(user);
-    res.header('auth-token', doc).send(doc);
+    res.header('auth-token', doc).send({ token: doc });
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
