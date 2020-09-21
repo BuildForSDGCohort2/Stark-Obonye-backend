@@ -31,7 +31,7 @@ router.post('/signin', async (req, res) => {
       password: req.body.password
     };
     const doc = await auth.postLogin(user);
-    res.header('auth-token', doc).send({ token: doc });
+    res.send({ token: doc });
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
