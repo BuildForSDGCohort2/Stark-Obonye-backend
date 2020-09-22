@@ -1,3 +1,4 @@
+import { response } from 'express';
 import Wallet from '../models/wallet.model';
 import WalletService from '../services/wallet.service';
 
@@ -10,7 +11,7 @@ export default class WalletController {
     const walletService = new WalletService();
     this.wallet.accountNumber = walletService.generateAccount();
     this.wallet = new Wallet(walletObj);
-    return this.wallet.save();
+    return this.wallet.save().then().catch((e) => response.send({ error: e }));
   }
 
   async getWallet(accountNumber) {
