@@ -49,7 +49,7 @@ const stokvelSchema = Schema({
   },
   wallet: {
     accountNumber: {
-      type: Number,
+      type: String,
       ref: 'Wallet',
       required: true
     }

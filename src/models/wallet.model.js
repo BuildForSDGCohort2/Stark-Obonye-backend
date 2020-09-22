@@ -7,7 +7,7 @@ const walletSchema = Schema({
     ref: 'User'
   },
   accountNumber: {
-    type: Number,
+    type: String,
     required: true,
     unique: true
   },

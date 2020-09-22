@@ -4,19 +4,19 @@ const { Schema } = mongoose;
 
 const transactionSchema = Schema({
   accountNumber: {
-    type: Number,
+    type: String,
     ref: 'Wallet'
   },
   fromWallet: {
     accountNumber: {
-      type: Number,
+      type: String,
       required: true
     },
     bankName: { type: String, required: true },
     reference: String
   },
   toWallet: {
-    accountNumber: { type: Number, required: true },
+    accountNumber: { type: String, required: true },
     bankName: { type: String, required: true },
     reference: String
   },
