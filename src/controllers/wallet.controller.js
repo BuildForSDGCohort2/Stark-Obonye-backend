@@ -1,4 +1,5 @@
 import Wallet from '../models/wallet.model';
+import WalletService from '../services/wallet.service';
 
 export default class WalletController {
   async createWallet(walletObj) {
@@ -6,6 +7,8 @@ export default class WalletController {
     if (this.wallet) {
       throw new Error('Account already Exists!');
     }
+    const walletService = new WalletService();
+    this.wallet.accountNumber = walletService.generateAccount();
     this.wallet = new Wallet(walletObj);
     return this.wallet.save();
   }
