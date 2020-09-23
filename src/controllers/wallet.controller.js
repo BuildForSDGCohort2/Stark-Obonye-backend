@@ -5,13 +5,15 @@ import WalletService from '../services/wallet.service';
 export default class WalletController {
   async createWallet(walletObj) {
     const walletService = new WalletService();
-    this.wallet = await Wallet.findById(walletObj.id);
+    const wallet = walletObj;
+    this.wallet = await Wallet.findById(wallet.id);
     if (this.wallet) {
       throw new Error('Wallet already Exists!');
     }
+    // TODO fix this you are not supposed to mutate the object
     // eslint-disable-next-line no-param-reassign
-    walletObj.accountNumber = walletService.generateAccount();
-    this.wallet = new Wallet(walletObj);
+    wallet.accountNumber = walletService.generateAccount();
+    this.wallet = new Wallet(wallet);
     console.log(this.wallet);
     return this.wallet
       .save()

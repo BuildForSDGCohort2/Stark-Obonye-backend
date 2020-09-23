@@ -19,8 +19,8 @@ router.post('/create', async (req, res) => {
       lastName: req.body.lastName,
       balance: req.body.deposit
     };
-    const status = await walletController.createWallet(wallet);
-    res.send({ message: status });
+    const doc = await walletController.createWallet(wallet);
+    res.send({ message: doc });
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
