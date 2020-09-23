@@ -7,7 +7,7 @@ export default class WalletController {
     const walletService = new WalletService();
     this.wallet = await Wallet.findById(walletObj.id);
     if (this.wallet) {
-      throw new Error('Account already Exists!');
+      throw new Error('Wallet already Exists!');
     }
     this.wallet.accountNumber = walletService.generateAccount();
     // eslint-disable-next-line no-console
