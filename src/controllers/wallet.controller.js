@@ -1,4 +1,4 @@
-import { response } from 'express';
+/* eslint-disable no-console */
 import Wallet from '../models/wallet.model';
 import WalletService from '../services/wallet.service';
 
@@ -15,8 +15,8 @@ export default class WalletController {
     this.wallet = new Wallet(walletObj);
     return this.wallet
       .save()
-      .then((result) => response.send({ doc: result }))
-      .catch((e) => response.send({ error: e }));
+      .then((result) => console.log({ doc: result }))
+      .catch((e) => console.log(e));
   }
 
   async getWallet(accountNumber) {
