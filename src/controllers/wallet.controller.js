@@ -10,8 +10,6 @@ export default class WalletController {
     if (this.wallet) {
       throw new Error('Wallet already Exists!');
     }
-    // TODO fix this you are not supposed to mutate the object
-    // eslint-disable-next-line no-param-reassign
     wallet.accountNumber = walletService.generateAccount();
     this.wallet = new Wallet(wallet);
     console.log(this.wallet);
