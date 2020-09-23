@@ -9,7 +9,7 @@ const { MongoClient } = require('mongodb');
 
 dotenv.config();
 
-const db = 'mongodb://localhost:27017/sikaDB';
+const db = process.env.MONGO_URI;
 // mongoose
 //   .connect(db, {
 //     useUnifiedTopology: true,
