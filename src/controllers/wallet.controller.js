@@ -9,10 +9,10 @@ export default class WalletController {
     if (this.wallet) {
       throw new Error('Wallet already Exists!');
     }
-    this.wallet.accountNumber = walletService.generateAccount();
-    // eslint-disable-next-line no-console
-    console.log(this.wallet.accountNumber);
+    // eslint-disable-next-line no-param-reassign
+    walletObj.accountNumber = walletService.generateAccount();
     this.wallet = new Wallet(walletObj);
+    console.log(this.wallet);
     return this.wallet
       .save()
       .then((result) => console.log({ doc: result }))
