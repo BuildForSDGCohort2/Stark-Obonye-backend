@@ -26,12 +26,6 @@ app.use('/api/v1/stokvel', stokvelRouter);
 app.use('/api/v1/transactions', transactionsRouter);
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   next();
-// });
-
 /** database connection */
 dbConnection.on('error', console.error.bind(console, 'connection error:'));
 dbConnection.once(
@@ -40,12 +34,7 @@ dbConnection.once(
 );
 /** database connection */
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running at port ${port}`);
-});
-
-server.on('clientError', (err, socket) => {
-  console.error(err);
-  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });

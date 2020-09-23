@@ -11,7 +11,7 @@ export default class WalletService {
     this.second = Math.floor(Math.random() * 1000);
     this.third = Math.floor(Math.random() * 1000);
     this.fourth = Math.floor(Math.random() * 1000);
-    const accountNumber = '';
-    return accountNumber.concat(this.first, this.second, this.third, this.fourth);
+    const accountNumber = `${this.first}${this.second}${this.third}${this.fourth}`;
+    return accountNumber;
   }
 }
