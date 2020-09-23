@@ -13,7 +13,10 @@ export default class WalletController {
     // eslint-disable-next-line no-console
     console.log(this.wallet);
     this.wallet = new Wallet(walletObj);
-    return this.wallet.save().then().catch((e) => response.send({ error: e }));
+    return this.wallet
+      .save()
+      .then((result) => response.send({ doc: result }))
+      .catch((e) => response.send({ error: e }));
   }
 
   async getWallet(accountNumber) {
