@@ -10,6 +10,8 @@ export default class WalletController {
     }
     const walletService = new WalletService();
     this.wallet.accountNumber = walletService.generateAccount();
+    // eslint-disable-next-line no-console
+    console.log(this.wallet);
     this.wallet = new Wallet(walletObj);
     return this.wallet.save().then().catch((e) => response.send({ error: e }));
   }

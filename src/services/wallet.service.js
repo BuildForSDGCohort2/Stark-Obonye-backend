@@ -12,8 +12,6 @@ export default class WalletService {
     this.third = Math.floor(Math.random() * 1000);
     this.fourth = Math.floor(Math.random() * 1000);
     const accountNumber = `${this.first}${this.second}${this.third}${this.fourth}`;
-    // eslint-disable-next-line no-console
-    console.log(accountNumber);
     return accountNumber;
   }
 }
