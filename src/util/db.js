@@ -9,7 +9,7 @@ const { MongoClient } = require('mongodb');
 
 dotenv.config();
 
-const db = process.env.MONGO_URI;
+const db = process.env.MONGODB_URI;
 // mongoose
 //   .connect(db, {
 //     useUnifiedTopology: true,
