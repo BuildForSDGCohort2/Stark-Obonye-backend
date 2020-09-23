@@ -15,7 +15,7 @@ export default class WalletController {
     console.log(this.wallet);
     return this.wallet
       .save()
-      .then((result) => console.log({ doc: result }))
+      .then()
       .catch((e) => console.log(e));
   }
 
