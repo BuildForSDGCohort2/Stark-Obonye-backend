@@ -4,14 +4,14 @@ import WalletService from '../services/wallet.service';
 
 export default class WalletController {
   async createWallet(walletObj) {
+    const walletService = new WalletService();
     this.wallet = await Wallet.findById(walletObj.id);
     if (this.wallet) {
       throw new Error('Account already Exists!');
     }
-    const walletService = new WalletService();
     this.wallet.accountNumber = walletService.generateAccount();
     // eslint-disable-next-line no-console
-    console.log(this.wallet);
+    console.log(this.wallet.accountNumber);
     this.wallet = new Wallet(walletObj);
     return this.wallet
       .save()
