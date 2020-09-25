@@ -4,9 +4,9 @@ import WalletController from '../controllers/wallet.controller';
 
 const router = express.Router();
 const walletController = new WalletController();
-router.post('/create', async (req, res) => {
+router.post('/create', async (req, res, next) => {
   try {
-    const token = req.header('auth-token');
+    const token = req.headers.authorization.split(' ')[1];
     if (!token) {
       res.send({ message: 'Access Denied' });
     }
@@ -22,6 +22,7 @@ router.post('/create', async (req, res) => {
     res.send({ message: doc });
   } catch (error) {
     res.status(400).send({ error: error.message });
+    next();
   }
 });
 
