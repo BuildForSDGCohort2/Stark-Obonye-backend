@@ -16,8 +16,7 @@ router.post('/create', async (req, res) => {
       id,
       address: req.body.address,
       firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      balance: req.body.deposit
+      lastName: req.body.lastName
     };
     const doc = await walletController.createWallet(wallet);
     res.send({ message: doc });
