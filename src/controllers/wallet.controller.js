@@ -12,7 +12,6 @@ export default class WalletController {
     }
     wallet.accountNumber = walletService.generateAccount();
     this.wallet = new Wallet(wallet);
-    console.log(this.wallet);
     return this.wallet
       .save()
       .then()
