@@ -11,10 +11,6 @@ const walletSchema = Schema({
     required: true,
     unique: true
   },
-  address: {
-    type: String,
-    required: true
-  },
   firstName: {
     type: String,
     required: true,

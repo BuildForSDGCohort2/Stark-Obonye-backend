@@ -14,7 +14,6 @@ router.post('/create', async (req, res, next) => {
     const { id } = decodedToken;
     const wallet = {
       id,
-      address: req.body.address,
       firstName: req.body.firstName,
       lastName: req.body.lastName
     };
