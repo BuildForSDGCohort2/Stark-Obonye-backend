@@ -28,7 +28,7 @@ router.post('/create', async (req, res, next) => {
 router.get('/balance', async (req, res) => {
   try {
     const { accountNumber } = req.body;
-    const token = req.header('auth-token');
+    const token = req.headers.authorization.split(' ')[1];
     if (!token) {
       res.send({ message: 'Access Denied' });
     }
